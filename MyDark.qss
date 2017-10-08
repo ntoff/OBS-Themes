@@ -178,27 +178,27 @@ QToolButton:pressed {
 }
 
 * [themeID="addIconSmall"] {
-    qproperty-icon: url(./Dark/plus.png);
+    qproperty-icon: url(./MyDark/plus.png);
 }
 
 * [themeID="removeIconSmall"] {
-    qproperty-icon: url(./Dark/minus.png);
+    qproperty-icon: url(./MyDark/minus.png);
 }
 
 * [themeID="propertiesIconSmall"] {
-    qproperty-icon: url(./Dark/cogwheel.png);
+    qproperty-icon: url(./MyDark/cogwheel.png);
 }
 
 * [themeID="configIconSmall"] {
-    qproperty-icon: url(./Dark/cogwheel.png);
+    qproperty-icon: url(./MyDark/cogwheel.png);
 }
 
 * [themeID="upArrowIconSmall"] {
-    qproperty-icon: url(./Dark/up_arrow.png);
+    qproperty-icon: url(./MyDark/up_arrow.png);
 }
 
 * [themeID="downArrowIconSmall"] {
-    qproperty-icon: url(./Dark/down_arrow.png);
+    qproperty-icon: url(./MyDark/down_arrow.png);
 }
 
 
@@ -263,7 +263,7 @@ QComboBox::drop-down {
 
 QComboBox::down-arrow {
     qproperty-alignment: AlignTop;
-    image: url(./Dark/updown.png);
+    image: url(./MyDark/updown.png);
     width: 100%;
 }
 
@@ -283,7 +283,7 @@ QComboBox::drop-down:editable {
 
 QComboBox::down-arrow:editable {
     qproperty-alignment: AlignTop;
-    image: url(./Dark/down_arrow.png);
+    image: url(./MyDark/down_arrow.png);
     width: 8%;
 }
 
@@ -349,12 +349,12 @@ QDoubleSpinBox::up-button:disabled, QDoubleSpinBox::up-button:off, QDoubleSpinBo
 }
 
 QSpinBox::up-arrow, QDoubleSpinBox::up-arrow {
-    image: url(./Dark/up_arrow.png);
+    image: url(./MyDark/up_arrow.png);
     width: 100%;
 }
 
 QSpinBox::down-arrow, QDoubleSpinBox::down-arrow {
-    image: url(./Dark/down_arrow.png);
+    image: url(./MyDark/down_arrow.png);
     width: 100%;
 }
 
@@ -387,6 +387,76 @@ QPushButton:checked {
     background-color: rgb(122,121,122); /* light */
 }
 
+/* Main UI Button Overrides */
+QPushButton#streamButton,
+QPushButton#recordButton,
+QPushButton[themeID="replayBufferButton"],
+QPushButton#modeSwitch,
+QPushButton#settingsButton,
+QPushButton#exitButton {
+    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
+        stop: 0 rgb(88, 87, 88), 
+        stop: 1 rgb(5, 5, 5));
+    border: 1px solid #8f8f91;
+    border-radius: 6px;    
+}
+
+/* Stream button yellow*/
+QPushButton#streamButton {
+    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
+        stop: 0 rgb(240, 200, 0), 
+        stop: 1 rgb(140, 100, 0));
+    color: rgb(20,20,20);
+}
+
+/* Record button red*/
+QPushButton#recordButton {
+    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
+        stop: 0 rgb(195, 0, 0), 
+        stop: 1 rgb(95, 0, 0));
+    color: rgb(239, 240, 241); 
+}
+
+/* Replay Buffer button green*/
+QPushButton[themeID="replayBufferButton"] {
+    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
+        stop: 0 rgb(6, 80, 0), 
+        stop: 1 rgb(0, 10, 0));
+    color: rgb(239, 240, 241);     
+}
+
+/* Button Hover */
+QPushButton:hover#streamButton,
+QPushButton:hover#recordButton,
+QPushButton:hover[themeID="replayBufferButton"],
+QPushButton:checked:hover[themeID="replayBufferButton"],
+QPushButton:hover#modeSwitch,
+QPushButton:checked:hover#modeSwitch,
+QPushButton:hover#settingsButton,
+QPushButton:hover#exitButton {
+	background-color: rgba(0, 188, 212, 0.5);
+    border: 2px solid #8f8f91;
+}
+
+/* Button Pressed */
+QPushButton:pressed#streamButton,
+QPushButton:pressed#recordButton,
+QPushButton:pressed[themeID="replayBufferButton"],
+QPushButton:checked:pressed[themeID="replayBufferButton"],
+QPushButton:pressed#modeSwitch,
+QPushButton:checked:pressed#modeSwitch,
+QPushButton:pressed#settingsButton,
+QPushButton:pressed#exitButton {
+	background-color: rgba(200, 188, 212, 0.5);
+}
+
+/* only the mode switch button supports states at the moment */
+QPushButton:checked#modeSwitch {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+        stop: 0 rgb(88, 87, 88),
+        stop: 0.5 rgb(5, 5, 5),
+        stop: 1 rgb(88, 87, 88));     
+}
 
 /* Sliders */
 
@@ -401,9 +471,9 @@ QSlider::groove:horizontal {
 
 QSlider::handle:horizontal {
     background-color: QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1,
-        stop: 0 rgb(240,239,240), /* lighter */
-        stop: 0.25 rgb(200,199,200),
-        stop: 1 rgb(162,161,162)); /* light */
+        stop: 0 rgb(240,8,8), 
+        stop: 0.25 rgb(200,100,100),
+        stop: 1 rgb(240,8,8)); 
     border: 1px solid rgb(58,57,58); /* dark */
     border-radius: 3px;
     height: 10px;
@@ -413,9 +483,9 @@ QSlider::handle:horizontal {
 
 QSlider::handle:horizontal:pressed {
     background-color: QLinearGradient(x1: 0, y1: 1, x2: 0, y2: 0,
-        stop: 0 rgb(240,239,240), /* lighter */
-        stop: 0.25 rgb(200,199,200),
-        stop: 1 rgb(162,161,162)); /* light */
+        stop: 0 rgb(240,8,8), 
+        stop: 0.25 rgb(200,100,100),
+        stop: 1 rgb(240,8,8));
 }
 
 QSlider::sub-page:horizontal:disabled {
@@ -480,7 +550,6 @@ QStatusBar::item {
     border: none;
 }
 
-
 /* Mute CheckBox */
 
 MuteCheckBox {
@@ -488,11 +557,11 @@ MuteCheckBox {
 }
 
 MuteCheckBox::indicator:checked {
-    image: url(./Dark/mute.png);
+    image: url(./MyDark/mute.png);
 }
 
 MuteCheckBox::indicator:unchecked {
-    image: url(./Dark/unmute.png);
+    image: url(./MyDark/unmute.png);
 }
 
 OBSHotkeyLabel[hotkeyPairHover=true] {
@@ -533,8 +602,8 @@ QLabel#errorLabel {
 
 VolumeMeter {
 	qproperty-bkColor: rgb(35, 38, 41); /* Dark Gray */
-	qproperty-magColor: rgb(0, 0, 0);
-    qproperty-peakColor: rgb(0, 95, 212);
+	qproperty-magColor: rgb(5, 5, 5);
+    qproperty-peakColor: rgb(230, 40, 50);
     /*qproperty-magColor: rgb(072, 134, 212);
     qproperty-peakColor: rgb(0, 95, 212);*/
 	qproperty-peakHoldColor: rgb(210, 255, 77);
@@ -542,53 +611,5 @@ VolumeMeter {
     qproperty-clipColor2: rgb(140, 0, 40);
 }
 
-/* Main UI Button Overrides */
-QPushButton#streamButton,
-QPushButton#recordButton,
-QPushButton[themeID="replayBufferButton"],
-QPushButton#modeSwitch,
-QPushButton#settingsButton,
-QPushButton#exitButton {
-    /*border: 1px solid rgba(15, 15, 15, 0.5);*/
-    /*background-color: rgb(88,87,88); /* kindaDark */
-    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
-        stop: 0 rgb(88, 87, 88), stop: 1 rgb(5, 5, 5));
-    border: 1px solid #8f8f91;
-    border-radius: 6px;    
-}
-
-/* Stream button */
-QPushButton#streamButton {
-    /*background-color: rgb(240, 200, 0);*/
-    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
-        stop: 0 rgb(240, 200, 0), stop: 1 rgb(140, 100, 0));
-    color: rgb(20,20,20);
-}
-/* Record button */
-QPushButton#recordButton {
-    /*background-color: rgb(195, 0, 0);*/
-    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
-        stop: 0 rgb(195, 0, 0), stop: 1 rgb(95, 0, 0));
-    color: rgb(239, 240, 241); 
-}
-/* Replay Buffer button */
-QPushButton[themeID="replayBufferButton"] {
-    /*background-color: rgb(6, 80, 0);*/
-    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
-        stop: 0 rgb(6, 80, 0), stop: 1 rgb(0, 10, 0));
-    color: rgb(239, 240, 241);     
-}
 
 
-/* Button Hover */
-QPushButton:hover#streamButton,
-QPushButton:hover#recordButton,
-QPushButton:hover[themeID="replayBufferButton"],
-QPushButton:hover#modeSwitch,
-QPushButton:hover#settingsButton,
-QPushButton:hover#exitButton {
-	background-color: rgba(0, 188, 212, 0.5);
-    /*border: 1px solid rgba(0, 188, 212, 0.5);*/
-    border: 2px solid #8f8f91;
-    border-radius: 6px;
-}
