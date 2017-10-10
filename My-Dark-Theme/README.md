@@ -11,7 +11,12 @@ Preview
 
 (image may not always reflect the most current version)
 
+Normal mode:
 ![](mydark_preview.png)
+Studio mode:
+![](mydark_preview_studiomode.png)
+
+Note the mode switch button changes to reflect the mode OBS is currently in. This is intentional and not some weird glitch.
 
 Install
 -------
