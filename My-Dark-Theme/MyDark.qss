@@ -21,12 +21,15 @@
 /* rgba(0, 95, 212, 0.5); /* my blue */
 /* #375a7f; /* blue button light */
 /* #21354b; /* blue button dark */
+/* #cacaca; /* grey button light */
+/* #4e4e4e); /* grey button dark */
 /* rgb(240, 200, 0); /* yellow button light */
 /* rgb(140, 100, 0); /* yellow button dark */
 /* rgb(195, 0, 0); /* red button light */
 /* rgb(95, 0, 0); /* red button dark */
 /* rgb(6, 80, 0); /* green button light */
 /* rgb(6, 30, 0); /* green button light */
+
 
 QMainWindow,
 QDialog,
@@ -360,7 +363,6 @@ QSpinBox::down-arrow, QDoubleSpinBox::down-arrow {
     width: 100%;
 }
 
-
 /* Buttons */
 
 QPushButton {
@@ -400,31 +402,7 @@ QPushButton#exitButton {
         stop: 0 #375a7f, 
         stop: 1 #21354b);
     border: 1px solid #8f8f91;
-    border-radius: 6px;    
-}
-
-/* Stream button yellow*/
-QPushButton#streamButton {
-    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
-        stop: 0 rgb(240, 200, 0), 
-        stop: 1 rgb(140, 100, 0));
-    color: rgb(20,20,20);
-}
-
-/* Record button red*/
-QPushButton#recordButton {
-    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
-        stop: 0 rgb(195, 0, 0), 
-        stop: 1 rgb(95, 0, 0));
-    color: rgb(239, 240, 241); 
-}
-
-/* Replay Buffer button green*/
-QPushButton[themeID="replayBufferButton"] {
-    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
-        stop: 0 rgb(6, 80, 0), 
-        stop: 1 rgb(6, 30, 0));
-    color: rgb(239, 240, 241);     
+    border-radius: 6px;
 }
 
 /* Button Hover */
@@ -451,14 +429,41 @@ QPushButton:pressed#settingsButton,
 QPushButton:pressed#exitButton {
 	background-color: rgba(200, 188, 212, 0.5);
 }
+/* button states for studio mode and recording / streaming status */
 
-/* only the mode switch button supports states at the moment */
+/* studio mode button turns light grey */
 QPushButton:checked#modeSwitch {
-	background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
-        stop: 0 #375a7f,
-        stop: 0.5 rgb(5, 5, 5),
-        stop: 1 #375a7f);     
+    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
+        stop: 0 #cacaca, 
+        stop: 1 #4e4e4e);
+        color: rgb(5, 5, 5); 
 }
+
+/* turns the record button red while recording*/
+QPushButton:checked#recordButton {
+	background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
+        stop: 0 rgb(195, 0, 0), 
+        stop: 1 rgb(95, 0, 0));
+    color: rgb(239, 240, 241); 
+}
+
+/* Turns the stream button bright yellow. 
+NOTE: as of OBS studio 21.0.1 This seems to be buggy, if you press the button to stream with confirmations on and you click no, the button will still be classified as being checked. 
+This seems to be an OBS bug and is present even in the default theme*/
+QPushButton:checked#streamButton {
+    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
+        stop: 0 rgb(240, 200, 0), 
+        stop: 1 rgb(140, 100, 0));
+    color: rgb(20,20,20);
+}
+
+/* This would turn the replay buffer button green when on if the replay buffer supported state changes 
+QPushButton:checked[themeID="replayBufferButton"]{
+    background-color: qlineargradient(x1: 0, y1: 0.3, x2: 0, y2: 1,
+        stop: 0 rgb(6, 80, 0), 
+        stop: 1 rgb(6, 30, 0));
+    color: rgb(239, 240, 241);     
+}*/
 
 /* Sliders */
 
@@ -600,7 +605,7 @@ QLabel#errorLabel {
 /**************************/
 /* --- Volume Control --- */
 /**************************/
-
+/* as of the new volume meter, these seem to be hard coded and are unable to be themed */
 VolumeMeter {
 	qproperty-bkColor: rgb(35, 38, 41); /* Dark Gray */
 	qproperty-magColor: #76dc2b;
