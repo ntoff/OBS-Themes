@@ -9,14 +9,19 @@ This is the bundled "Dark" theme that has been modified by me.
 Preview
 --------
 
+*Note on the button states*: *Not all of the buttons currently support states, currently only streaming, recording, and studio mode appear to support states (replay buffer button does __not__ appear to support states)*
+
 (image may not always reflect the most current version)
 
-Normal mode:
+Idle:
 ![](mydark_preview.png)
+Recording:
+![](mydark_preview_recording.png)
+Streaming:
+![](mydark_preview_streaming.png)
 Studio mode:
 ![](mydark_preview_studiomode.png)
 
-Note the mode switch button changes to reflect the mode OBS is currently in. This is intentional and not some weird glitch.
 
 Install
 -------
